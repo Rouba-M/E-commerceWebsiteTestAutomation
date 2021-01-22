@@ -1,1 +1,8 @@
+pages/SearchResultsPage.class
+utils/Products.class
+pages/HomePage.class
 pages/BasePage.class
+pages/ShoppingCartPage.class
+services/CartServices.class
+utils/Links.class
+pages/ProductsList.class
