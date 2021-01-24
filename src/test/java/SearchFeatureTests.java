@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.HomePage;
 import pages.SearchResultsPage;
@@ -10,6 +11,7 @@ public class SearchFeatureTests extends BaseTests {
 
 
     @Test
+    @DisplayName("Test searched product is listed in results page")
     public void testSearchForProduct() {
         String productName="Blouse";
         HomePage homePage=new HomePage(driver);
