@@ -13,6 +13,11 @@ public class ShoppingCartPage extends BasePage{
         super(driver);
     }
 
+
+    public void open(){
+        open("/index.php?controller=order");
+    }
+
     public boolean hasItems(int i) {
         return getNumberOfItemsListed()==i;
     }
@@ -22,11 +27,13 @@ public class ShoppingCartPage extends BasePage{
     }
 
     public void removeItemFromCart() {
-       driver.findElement(trashLocator).click();
+
+        driver.findElement(trashLocator).click();
     }
 
     public boolean isCartEmpty() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(emptyCartAlertLocator));
         return getNumberOfItemsListed()==0;
     }
+
 }

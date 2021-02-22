@@ -1,11 +1,10 @@
+import io.restassured.http.ContentType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.HomePage;
 import pages.SearchResultsPage;
-import utils.Links;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SearchFeatureTests extends BaseTests {
 
@@ -15,7 +14,7 @@ public class SearchFeatureTests extends BaseTests {
     public void testSearchForProduct() {
         String productName="Blouse";
         HomePage homePage=new HomePage(driver);
-        homePage.open(Links.HOME);
+        homePage.open();
         homePage.search(productName);
 
       assertTrue(new SearchResultsPage(driver).products.isProductListed(productName), "Product is not listed in Search Results!");

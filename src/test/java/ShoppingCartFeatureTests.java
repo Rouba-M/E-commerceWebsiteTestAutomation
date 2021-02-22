@@ -3,9 +3,10 @@ import org.junit.jupiter.api.Test;
 import pages.HomePage;
 import pages.ShoppingCartPage;
 import services.CartServices;
-import utils.Links;
+
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class ShoppingCartFeatureTests extends BaseTests {
 
@@ -15,10 +16,10 @@ public class ShoppingCartFeatureTests extends BaseTests {
     public void testAddedItemShowsInCartPage() {
         //Add an item to Cart page
         HomePage homePage = new HomePage(driver);
-        homePage.open(Links.HOME);
+        homePage.open();
         homePage.products.addRandomItem();
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
-        shoppingCartPage.open(Links.CARTPAGE);
+        shoppingCartPage.open();
 
         //Assert item shows in cart Page
         assertTrue(shoppingCartPage.hasItems(1),"Shopping Cart has not the item added");
@@ -28,17 +29,18 @@ public class ShoppingCartFeatureTests extends BaseTests {
     @DisplayName("Test item can be removed successfully from cart")
     public void testSuccessfulItemRemoval() {
         // Add item to cart via web service call
-        new CartServices(driver).addItemToCart(driver,"Printed Chiffon Dress");
+         new CartServices(driver).addItemToCart(driver,"Printed Chiffon Dress");
 
-        //Assert item shows in Cart Page
+        //Go to Cart Url
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
-        assertTrue(shoppingCartPage.hasItems(1),"Shopping Cart has not the item added");
+        shoppingCartPage.open();
 
         //Remove item from cart
         shoppingCartPage.removeItemFromCart();
 
         //Assert item is removed successfully from cart
         assertTrue(shoppingCartPage.isCartEmpty(),"Shopping Cart is not empty!");
+
     }
 
 

@@ -13,7 +13,9 @@ public class HomePage extends BasePage {
         products=new ProductsList(driver);
 
     }
-
+    public void open(){
+        open("");
+    }
 
     public void search(String productName) {
         driver.findElement(searchBoxLocator).sendKeys(productName);

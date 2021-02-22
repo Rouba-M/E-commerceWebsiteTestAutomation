@@ -11,8 +11,8 @@ import java.util.Set;
 public class BasePage {
 
     public WebDriver driver;
-    public WebDriverWait wait;
-    public WebDriver.Navigation navigate;
+    protected WebDriverWait wait;
+    private WebDriver.Navigation navigate;
 
     public BasePage(WebDriver driver) {
         this.driver=driver;
@@ -20,8 +20,8 @@ public class BasePage {
         navigate=driver.navigate();
     }
 
-    public void open(String url){
-        driver.get(url);
+    public void open(String partialUrl){
+        driver.get("http://automationpractice.com/index.php"+partialUrl);
     }
 
     public void goBack(){
@@ -54,5 +54,12 @@ public class BasePage {
             if(driver.getTitle().equalsIgnoreCase(tabTitle))
                 break;
         }
+    }
+
+    public void fillField(By locator, String input){
+        driver.findElement(locator).sendKeys(input);
+    }
+    public void click(By locator){
+        driver.findElement(locator).click();
     }
 }
